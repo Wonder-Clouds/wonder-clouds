@@ -24,10 +24,11 @@ const ServiceCard = ({
           bg-white/80 backdrop-blur-sm 
           border border-blue-100/50 
           rounded-lg
-          p-6 sm:p-8
+          p-4 sm:p-6 md:p-8 max-w-full overflow-hidden
           shadow-lg hover:shadow-2xl
           transition-all duration-300 
           hover:border-blue-200/70 min-h-[220px]"
+
         whileHover={{
           y: -10,
           scale: 1.025,

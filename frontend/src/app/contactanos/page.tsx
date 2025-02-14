@@ -3,7 +3,7 @@ import ContactTitle from "@/app/contactanos/components/ContactTitle";
 
 const Contactanos = () => {
   return (
-    <>
+    <div className="mb-24">
         
       <ContactTitle />
 
@@ -12,7 +12,7 @@ const Contactanos = () => {
       <ContactForm />
 
       </div>
-    </>
+    </div>
   );
 };
 

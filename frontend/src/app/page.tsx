@@ -7,8 +7,8 @@ import ContactUsForm from "@/app/components/ContactUsForm";
 
 const Inicio = () => {
   return (
-    <>
-      <div className=" flex flex-row w-full lg:w-full items-center relative mb-12 px-auto mx-auto">
+    <div>
+      <div className=" flex flex-row w-full lg:w-full items-center relative px-auto mx-auto">
         <MovingCirclesBackground />
         <HeroSection />
       </div>
@@ -23,11 +23,11 @@ const Inicio = () => {
         <ProjectsCarousel />
       </div>
 
-      <div className="flex flex-row w-full lg:w-full items-center space-y-10 relative mx-auto mt-24 px-auto">
+      <div className="flex flex-row w-full lg:w-full items-center space-y-10 relative mx-auto mt-24 px-auto bg-light">
         <MovingCirclesBackground />
         <ContactUsForm />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@ function Nosotros() {
   return (
     <>
       <NosotrosTitle />
-      <Wave color="#F8FAFC" />
+      <Wave color="#F2F8FE" />
       <Team />
     </>
   );

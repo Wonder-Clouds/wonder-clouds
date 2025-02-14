@@ -16,7 +16,7 @@ const HeroSection = () => {
   });
   return (
     <>
-      <div className="max-w-8xl mx-auto flex flex-col justify-center lg:flex-row items-center relative overflow-hidden z-10 space-y-5 space-x-20 px-4 lg:px-0">
+      <div className="max-w-8xl mx-auto flex flex-col justify-center lg:flex-row items-center relative overflow-hidden z-10 space-y-5 space-x-10 px-4 lg:px-0">
 
         {/* Contenedor animado del texto */}
         <motion.div
@@ -61,12 +61,13 @@ const HeroSection = () => {
               repeatType: "loop",
               ease: "easeInOut", 
             }}
-            className="w-auto h-auto" 
+            className="w-5/6 h-auto mx-auto" 
           >
             <Image
               src="/static/images/inicio.svg"
-              width={1000}
-              height={1000}
+              width={800}
+              height={800}
+              className="mx-auto"
               alt="Imagen representativa"
             />
           </motion.div>

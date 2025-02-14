@@ -43,17 +43,20 @@ const projects = [
 const ProjectsCarousel = () => {
   return (
     <>
-      <motion.h2
-        className="text-3xl lg:text-4xl text-default font-semibold"
-        initial={{ opacity: 0, y: 20 }} // Inicia transparente y un poco abajo
-        whileInView={{ opacity: 1, y: 0 }} // Aparece y sube al estar en vista
-        transition={{ duration: 0.6, ease: "easeOut" }} // Controla duración y suavidad
-        viewport={{ once: true, amount: 0.2 }} // Animación solo una vez cuando esté 30% visible
+      <motion.div
+        className="flex flex-col items-center text-center "
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true }}
       >
-        Nuestro<span className="ps-2 text-primary">Trabajo</span>
-      </motion.h2>
+        <h2 className="text-3xl lg:text-4xl text-default font-semibold">
+          Nuestro<span className="ps-2 text-primary">Trabajo</span>
+        </h2>
+        <div className="w-24 h-1 bg-primary mt-4"></div>
+      </motion.div>
 
-      <div className="w-full max-w-[1400px] mx-auto lg:px-8 mt-16">
+      <div className="w-full max-w-[1400px] mx-auto lg:px-8">
         <Swiper
           effect={'coverflow'}
           grabCursor={true}

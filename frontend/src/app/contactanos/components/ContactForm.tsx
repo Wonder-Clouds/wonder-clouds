@@ -35,8 +35,8 @@ const ContactForm = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           Obtén una consulta gratuita para impulsar tu negocio al siguiente nivel.
-          Ya sea que necesites una estrategia de <b>marketing digital</b> efectiva,
-          <b>desarrollo de software</b> a medida, implementación de <b>chatbots</b> o
+          Ya sea que necesites una estrategia de <b>marketing digital</b> efectiva, 
+          <b> desarrollo de software</b> a medida, implementación de <b>chatbots</b> o
           soluciones tecnológicas innovadoras, nuestro equipo está aquí para ayudarte a
           alcanzar tus objetivos.
         </motion.p>

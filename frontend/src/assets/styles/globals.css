@@ -5,6 +5,7 @@
 :root {
   --background: #FFFFFF;
   --foreground: #171717;
+  --font-default: var(--font-poppins);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +21,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
+  font-family: var(--font-poppins), sans-serif;
 }
 
 @layer utilities {

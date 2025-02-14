@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { Montserrat, Quicksand, Roboto } from "next/font/google";
+import { Montserrat, Quicksand, Roboto, Poppins } from "next/font/google";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import WhatsAppButton from "@/components/ui/WhatsappButton";
@@ -31,6 +31,15 @@ const roboto = Roboto({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-roboto",
+  fallback: ["system-ui", "arial"],
+})
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "700"],
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
   fallback: ["system-ui", "arial"],
 })
 
@@ -116,7 +125,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       suppressHydrationWarning
     >
       <body
-        className={`${quicksand.variable} ${monserrat.variable} ${roboto.variable} min-h-screen flex flex-col bg-white antialiased`}
+        className={`${poppins.variable} min-h-screen flex flex-col bg-white antialiased`}
       >
         <Suspense fallback={<div className="h-16" />}>
           <Header />

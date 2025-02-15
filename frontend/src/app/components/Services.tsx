@@ -58,8 +58,8 @@ export default function Services() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
@@ -71,18 +71,18 @@ export default function Services() {
   return (
     <div className="container mx-auto px-4 py-16">
       <motion.div
-        className="mb-12 flex items-center gap-3"
-        initial={{ opacity: 0, x: -20 }} 
-        whileInView={{ opacity: 1, x: 0 }} 
-        transition={{ duration: 0.6, ease: "easeOut" }} 
+        className="flex flex-col items-center text-center mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <div className="w-1 h-8 bg-primary"></div>
-        <h2 className="text-3xl lg:text-4xl text-default font-semibold text-start">
+        <h2 className="text-3xl lg:text-4xl text-default font-semibold">
           Nuestros <span className="text-primary">Servicios</span>
         </h2>
+        <div className="w-24 h-1 bg-primary mt-4"></div>
       </motion.div>
-      
+
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
         variants={containerVariants}
@@ -91,8 +91,8 @@ export default function Services() {
         viewport={{ once: true, amount: 0.1 }}
       >
         {services.map((item, index) => (
-          <motion.div 
-            key={index} 
+          <motion.div
+            key={index}
             variants={itemVariants}
             className="w-full group"
           >

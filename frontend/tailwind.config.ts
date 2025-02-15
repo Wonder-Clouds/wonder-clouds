@@ -17,6 +17,7 @@ const config: Config = {
         quicksand: 'var(--font-quicksand)',
         monserrat: 'var(--font-monserrat)',
 				roboto: 'var(--font-roboto)',
+        poppins: ["var(--font-poppins)", "sans-serif"],
       },
       gradientColorStops: {
         primary: 'var(--primary)',
@@ -26,8 +27,7 @@ const config: Config = {
   			foreground: 'var(--foreground)',
   			primary: 'var(--primary)',
   			secondary: 'var(--secondary)',
-				"background-light": '#F8FAFC',
-				light: '#BCD0DF',
+				light: '#F2F8FE',
   			default: '#1F2C3D'
   		},
   		keyframes: {

@@ -13,7 +13,7 @@ const Team = () => {
   };
 
   return (
-    <div className="w-full bg-background-light pb-20">
+    <div className="w-full bg-light pb-20">
       <motion.div
         className="flex flex-col w-full max-w-7xl items-center relative space-y-20 mx-auto "
         initial="hidden"

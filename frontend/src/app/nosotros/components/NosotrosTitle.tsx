@@ -40,7 +40,7 @@ const NosotrosTitle = () => {
           variants={fadeInUp}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-5xl md:text-6xl text-primary font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl text-primary font-bold mb-4">
             Nosotros
           </h1>
           <Breadcrumb />

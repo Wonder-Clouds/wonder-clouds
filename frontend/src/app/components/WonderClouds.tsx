@@ -24,42 +24,20 @@ export default function WonderClouds() {
     { label: "Proyectos completados", value: "15+" }
   ];
 
-  // Snow particle generation
-  const generateSnowParticles = () => {
-    return Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 5}s`,
-      size: `${Math.random() * 4 + 2}px`
-    }));
-  };
-
-  const snowParticles = generateSnowParticles();
-
   return (
     <div className="relative overflow-hidden">
-      {/* Snow particles */}
-      {snowParticles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className="absolute z-10 bg-white rounded-full opacity-70"
-          style={{
-            left: particle.left,
-            width: particle.size,
-            height: particle.size
-          }}
-          animate={{
-            y: ['0vh', '100vh'],
-            x: ['-20px', '20px']
-          }}
-          transition={{
-            duration: Math.random() * 10 + 10,
-            repeat: Infinity,
-            delay: parseFloat(particle.animationDelay),
-            ease: 'linear'
-          }}
-        />
-      ))}
+      <motion.div
+        className="absolute z-10 bg-white rounded-full opacity-70"
+        animate={{
+          y: ['0vh', '100vh'],
+          x: ['-20px', '20px']
+        }}
+        transition={{
+          duration: Math.random() * 10 + 10,
+          repeat: Infinity,
+          ease: 'linear'
+        }}
+      />
 
       <motion.div
         initial={{ scale: 0.8, rotate: -10, opacity: 0 }}
@@ -77,7 +55,7 @@ export default function WonderClouds() {
       </motion.div>
 
       <motion.div
-        className="flex flex-col items-center text-white bg-gradient-to-b from-primary  to-primary/20 relative min-h-[80vh] px-4 md:px-10"
+        className="flex flex-col items-center text-white bg-gradient-to-b from-primary to-primary/20 relative min-h-[80vh] px-4 md:px-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -192,7 +170,7 @@ export default function WonderClouds() {
             whileTap={{ scale: 0.95 }}
           >
             Comienza ahora
-            <div className="absolute top-0 left-0 w-0 h-full bg-primary -z-10 group-hover:w-full transition-all duration-1000"/>
+            <div className="absolute top-0 left-0 w-0 h-full bg-primary -z-10 group-hover:w-full transition-all duration-1000" />
           </motion.div>
         </Link>
       </motion.div>

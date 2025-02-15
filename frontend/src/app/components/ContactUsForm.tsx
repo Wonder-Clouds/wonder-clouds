@@ -11,15 +11,16 @@ const ContactUsForm = () => {
     <div className="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
       <div className="flex flex-col py-8 sm:py-12">
         <motion.div
-          className="flex items-center mx-auto gap-3 mb-6"
+          className="flex flex-col items-center text-center mb-12"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <h2 className="text-3xl lg:text-4xl text-default font-semibold text-center">
-          Comunícate con<span className="ps-2 text-primary">Nosotros</span>
+            ¿Tienes una idea?<span className="ps-2 text-primary">Contáctanos</span>
           </h2>
+          <div className="w-24 h-1 bg-primary mt-4"></div>
         </motion.div>
 
         <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
@@ -163,7 +164,7 @@ const ContactUsForm = () => {
                 viewport={{ once: true, amount: 0.2 }}
               >
                 <Button
-                  className="bg-primary text-white w-full sm:w-auto sm:self-center px-8 py-4 text-lg sm:text-xl rounded-lg hover:opacity-90 transition-opacity focus:ring-2 focus:ring-primary"
+                  className="flex mx-auto bg-primary text-white w-full sm:w-auto sm:self-center px-8 py-4 text-lg sm:text-xl rounded-lg hover:opacity-90 transition-opacity focus:ring-2 focus:ring-primary"
                   startContent={<Send className="h-5 w-5" />}
                 >
                   Enviar

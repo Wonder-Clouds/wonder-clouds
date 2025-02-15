@@ -48,7 +48,7 @@ function Servicios() {
   ];  
 
   return (
-    <>
+    <div className="mb-24">
       <ServiciosTitle/>
 
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-10 mx-auto mt-12 p-5">
@@ -63,7 +63,7 @@ function Servicios() {
             />
           ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -22,7 +22,7 @@ const projects = [
   },
   {
     title: "CORLAD - Cusco",
-    imageSrc: "/static/images/prueba2.png",
+    imageSrc: "/static/images/proyecto_01.webp",
     description: "",
     tags: ["Plataforma web", "Dashboard", "Base de datos"]
   },

@@ -4,7 +4,7 @@ import Image from "next/image";
 const proyectoId = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <Image className="rounded-xl mx-auto" src={"/static/images/prueba2.png"} alt="Proyecto" width={1200} height={1080} />
+      <Image className="rounded-xl mx-auto" src={"/static/images/proyecto_01.webp"} alt="Proyecto" width={1200} height={1080} />
       <div className="max-w-5xl mx-auto mt-10">
         {/* Project Header */}
         <div className="mb-8">

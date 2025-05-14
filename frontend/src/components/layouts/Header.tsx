@@ -4,18 +4,60 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, Monitor, Smartphone, Cloud, Lightbulb, Code, Globe, MessageSquare, Paintbrush, Cog } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const pathname = usePathname();
 
   const navLinks = [
     { href: '/', label: 'Inicio' },
     { href: '/nosotros', label: 'Nosotros' },
-    { href: '/servicios', label: 'Servicios' },
+    {
+      label: 'Servicios',
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          href: '/servicios/desarrollo-software',
+          label: 'Desarrollo de Software',
+          icon: 'Code',
+          description: 'Soluciones personalizadas y sistemas a medida para empresas'
+        },
+        {
+          href: '/servicios/aplicaciones-moviles',
+          label: 'Aplicaciones Móviles',
+          icon: 'Smartphone',
+          description: 'Apps nativas y multiplataforma con experiencias optimizadas'
+        },
+        {
+          href: '/servicios/paginas-web',
+          label: 'Desarrollo de Páginas Web',
+          icon: 'Globe',
+          description: 'Sitios web responsivos, modernos y optimizados para SEO'
+        },
+        {
+          href: '/servicios/chatbots',
+          label: 'Integración de Chatbots',
+          icon: 'MessageSquare',
+          description: 'Asistentes virtuales inteligentes para atención 24/7'
+        },
+        {
+          href: '/servicios/ux-ui',
+          label: 'Diseño UX/UI',
+          icon: 'Paintbrush',
+          description: 'Interfaces intuitivas y experiencias de usuario atractivas'
+        },
+        {
+          href: '/servicios/automatizacion',
+          label: 'Automatización de Procesos',
+          icon: 'Cog',
+          description: 'Optimización de flujos de trabajo y reducción de tareas manuales'
+        }
+      ]
+    },
     { href: '/proyectos', label: 'Nuestros proyectos' },
   ];
 
@@ -46,6 +88,24 @@ const Header = () => {
   const linkVariants = {
     hover: { scale: 1.05, transition: { duration: 0.2 } },
     tap: { scale: 0.95 }
+  };
+
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -5, height: 0 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      height: 'auto',
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const dropdownItemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: { opacity: 1, x: 0 }
   };
 
   return (
@@ -88,24 +148,102 @@ const Header = () => {
               variants={linkVariants}
               whileHover="hover"
               whileTap="tap"
+              className="relative"
+              onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
+              onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
             >
               <Link
-                href={link.href}
+                href={link.href ?? '#'}
                 className={`text-lg font-medium relative group transition-all duration-300
-                    ${pathname === link.href
+                    ${pathname === link.href || (pathname.startsWith(link.href + '/') && link.href !== '/')
                     ? 'text-secondary font-semibold'
                     : 'text-default hover:text-secondary'}`}
               >
                 <span className="flex items-center gap-2">
                   {link.label}
+                  {link.hasDropdown && <ChevronDown className="h-4 w-4" />}
                 </span>
-                {pathname === link.href && (
+                {(pathname === link.href || (pathname.startsWith(link.href + '/') && link.href !== '/')) && (
                   <motion.div
                     className="absolute bottom-0 left-0 w-full h-0.5 bg-secondary"
                     layoutId="underline"
                   />
                 )}
               </Link>
+
+              {/* Dropdown para servicios */}
+              {link.hasDropdown && (
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      className="absolute top-full -right-72 mt-2 w-screen max-w-4xl bg-white rounded-xl shadow-lg overflow-hidden z-20"
+                    >
+                      <div className="p-4 grid grid-cols-3 gap-4">
+                        {link.dropdownItems.map((item, idx) => {
+                          // Determinar el icono correcto
+                          let IconComponent;
+                          switch (item.icon) {
+                            case 'Code':
+                              IconComponent = Code;
+                              break;
+                            case 'Smartphone':
+                              IconComponent = Smartphone;
+                              break;
+                            case 'Globe':
+                              IconComponent = Globe;
+                              break;
+                            case 'MessageSquare':
+                              IconComponent = MessageSquare;
+                              break;
+                            case 'Paintbrush':
+                              IconComponent = Paintbrush;
+                              break;
+                            case 'Cog':
+                              IconComponent = Cog;
+                              break;
+                            default:
+                              IconComponent = Code;
+                          }
+
+                          return (
+                            <motion.div
+                              key={item.label}
+                              variants={dropdownItemVariants}
+                            >
+                              <Link
+                                href={item.href}
+                                className={`flex items-start p-4 rounded-lg hover:bg-gray-50 transition-colors group
+                                  ${pathname === item.href
+                                    ? 'bg-gray-50/80 ring-1 ring-gray-100'
+                                    : ''}`}
+                              >
+                                <div className="flex-shrink-0 mr-4">
+                                  <div className={`p-2 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all`}>
+                                    <IconComponent className="h-6 w-6" />
+                                  </div>
+                                </div>
+                                <div>
+                                  <p className={`text-base font-medium mb-1 group-hover:text-secondary transition-colors
+                                    ${pathname === item.href ? 'text-secondary' : 'text-gray-900'}`}>
+                                    {item.label}
+                                  </p>
+                                  <p className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors">
+                                    {item.description}
+                                  </p>
+                                </div>
+                              </Link>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              )}
             </motion.div>
           ))}
 
@@ -153,7 +291,7 @@ const Header = () => {
         </motion.button>
       </div>
 
-      {/* Menú Móvil Mejorado */}
+      {/* Menú Móvil */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -170,22 +308,98 @@ const Header = () => {
               transition={{ duration: 0.3, delay: 0.1 }}
             >
               {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    href={link.href}
-                    className={`flex items-center gap-3 px-4 py-3 text-base font-medium transition-colors
-                      ${pathname === link.href
-                        ? 'text-secondary bg-gray-50'
-                        : 'text-default hover:text-secondary hover:bg-gray-50'}`}
+                <React.Fragment key={link.label}>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
+                    {link.hasDropdown ? (
+                      <button
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                        className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium transition-colors
+                        ${pathname.startsWith(link.href ?? '/')
+                            ? 'text-secondary bg-gray-50'
+                            : 'text-default hover:text-secondary hover:bg-gray-50'}`}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                    ) : (
+                      <Link
+                        href={link.href ?? '#'}
+                        className={`flex items-center gap-3 px-4 py-3 text-base font-medium transition-colors
+                          ${pathname === link.href
+                            ? 'text-secondary bg-gray-50'
+                            : 'text-default hover:text-secondary hover:bg-gray-50'}`}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </motion.div>
+
+                  {/* Dropdown móvil para servicios */}
+                  {link.hasDropdown && (
+                    <AnimatePresence>
+                      {isServicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="bg-gray-50 overflow-hidden"
+                        >
+                          {link.dropdownItems.map((item, idx) => {
+                            // Determinar el icono correcto
+                            let IconComponent;
+                            switch (item.icon) {
+                              case 'Monitor':
+                                IconComponent = Monitor;
+                                break;
+                              case 'Smartphone':
+                                IconComponent = Smartphone;
+                                break;
+                              case 'Cloud':
+                                IconComponent = Cloud;
+                                break;
+                              case 'Lightbulb':
+                                IconComponent = Lightbulb;
+                                break;
+                              default:
+                                IconComponent = Monitor;
+                            }
+
+                            return (
+                              <motion.div
+                                key={item.label}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: idx * 0.05 }}
+                              >
+                                <Link
+                                  href={item.href}
+                                  className={`flex items-center px-8 py-3 text-sm transition-colors hover:bg-gray-100
+                                    ${pathname === item.href
+                                      ? 'text-secondary font-medium'
+                                      : 'text-default hover:text-secondary'}`}
+                                >
+                                  <div className="flex-shrink-0 mr-3">
+                                    <div className="p-1 rounded-full bg-primary/10 text-primary">
+                                      <IconComponent className="h-4 w-4" />
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <p className="font-medium">{item.label}</p>
+                                    <p className="text-xs text-gray-500">{item.description}</p>
+                                  </div>
+                                </Link>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </React.Fragment>
               ))}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

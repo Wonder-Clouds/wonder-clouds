@@ -64,7 +64,7 @@ export default function Footer() {
     },
     {
       icon: FaPhoneAlt,
-      text: "+51 940 576 340",
+      text: "+51 946 899 196",
     },
     {
       icon: FaEnvelope,

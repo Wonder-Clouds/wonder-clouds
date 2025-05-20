@@ -15,12 +15,12 @@ const NosotrosTitle = () => {
   const stats = [
     {
       icon: <Users className="w-6 h-6 text-blue-400" />,
-      value: "10+",
+      value: "30+",
       label: "Aliados estratégicos"
     },
     {
       icon: <Rocket className="w-6 h-6 text-blue-400" />,
-      value: "15+",
+      value: "35+",
       label: "Proyectos Exitosos"
     },
     {

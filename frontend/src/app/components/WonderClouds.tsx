@@ -19,9 +19,9 @@ export default function WonderClouds() {
   };
 
   const statsData = [
-    { label: "Años de trayectoria", value: "2+" },
-    { label: "Aliados estratégicos", value: "10+" },
-    { label: "Proyectos completados", value: "15+" }
+    { label: "Años de trayectoria", value: "3+" },
+    { label: "Aliados estratégicos", value: "20+" },
+    { label: "Proyectos completados", value: "35+" }
   ];
 
   return (
@@ -118,7 +118,6 @@ export default function WonderClouds() {
           </h1>
         </motion.div>
 
-
         <motion.p
           className="text-xl md:text-2xl text-center max-w-4xl mt-10 text-white/90"
           variants={fadeInUpVariant}
@@ -126,9 +125,9 @@ export default function WonderClouds() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          En Wonder Clouds nos encargamos de diseñar estrategias innovadoras para
-          impulsar tu marca hacia nuevos horizontes y conectar con audiencias
-          globales de manera impactante.
+          En Wonder Clouds nos especializamos en el desarrollo de software a medida,
+          creando soluciones innovadoras y escalables para impulsar la transformación digital
+          de tu empresa.
         </motion.p>
 
         <motion.div
@@ -139,7 +138,7 @@ export default function WonderClouds() {
           viewport={{ once: true }}
         >
           <h2 className="text-2xl md:text-3xl font-semibold text-center">
-            Nuestros expertos están listos para ayudarte
+            Nuestro equipo de expertos está listo para construir tu próxima gran solución tecnológica
           </h2>
         </motion.div>
 

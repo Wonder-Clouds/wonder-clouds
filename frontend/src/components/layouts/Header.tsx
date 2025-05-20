@@ -51,7 +51,7 @@ const Header = () => {
           description: 'Interfaces intuitivas y experiencias de usuario atractivas'
         },
         {
-          href: '/servicios/automatizacion',
+          href: '/servicios/automatizaciones',
           label: 'Automatización de Procesos',
           icon: 'Cog',
           description: 'Optimización de flujos de trabajo y reducción de tareas manuales'
@@ -257,7 +257,7 @@ const Header = () => {
             >
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10 flex items-center gap-2">
-                Consulta aquí
+                Contáctanos
                 <motion.svg
                   stroke="currentColor"
                   fill="currentColor"
@@ -411,7 +411,7 @@ const Header = () => {
                   href="/contactanos"
                   className="block text-center text-base font-medium text-white bg-primary hover:bg-secondary transition-colors rounded-xl py-3 px-4"
                 >
-                  Consulta aqui
+                  Contáctanos
                 </Link>
               </motion.div>
             </motion.div>

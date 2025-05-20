@@ -100,25 +100,9 @@ const Team = () => {
             linkedinUrl="https://www.linkedin.com/"
           />
           <TeamCard
-            name="Andrés Tejada"
-            role="Desarrollador de software"
-            imageSrc="/static/images/team/andres.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
-          <TeamCard
             name="Kiara Oquendo"
             role="Especialista en Marketing Digital"
             imageSrc="/static/images/team/kiara.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
-          <TeamCard
-            name="Leslie Vargas"
-            role="Diseñadora UX/UI"
-            imageSrc="/static/images/team/leslie.webp"
             githubUrl="https://github.com/"
             instagramUrl="https://www.instagram.com/"
             linkedinUrl="https://www.linkedin.com/"
@@ -131,7 +115,6 @@ const Team = () => {
             instagramUrl="https://www.instagram.com/"
             linkedinUrl="https://www.linkedin.com/"
           />
-
         </motion.div>
       </motion.div>
     </div>

@@ -1,4 +1,4 @@
-from models.category import Category
+from ..models.category import Category
 from sqlmodel import Session, select
 from fastapi import HTTPException
 
@@ -45,7 +45,7 @@ def patch_category(session: Session, category_id: int, category_data: Category) 
     session.refresh(db_category)
 
     return db_category
-    
+
 
 def delete_category(session: Session, category_id: int) -> bool:
     db_category = session.get(Category, category_id)

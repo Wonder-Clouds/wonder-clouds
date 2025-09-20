@@ -19,7 +19,7 @@ class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = [
-            'id', 'title', 'cover', 'content', 'is_published',
+            'id', 'title', 'cover', 'content', 'is_published', 'slug',
             'published_date', 'created_at', 'updated_at', 'categories', 'tags',
             'category_ids', 'tag_ids'
         ]

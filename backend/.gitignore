@@ -3,3 +3,6 @@
 migrations/
 db.sqlite3
 postgres/
+env/
+# Ignore Python cache files
+__pycache__/

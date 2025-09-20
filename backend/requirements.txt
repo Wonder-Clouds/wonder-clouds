@@ -3,11 +3,17 @@ Django==5.2.6
 django-filter==25.1
 django-rest==0.8.7
 django-safedelete==1.4.1
+django-tinymce==4.1.0
 djangorestframework==3.16.1
+drf-yasg==1.21.10
+inflection==0.5.1
 Markdown==3.9
 packaging==25.0
 pillow==11.3.0
 psycopg2-binary==2.9.10
 python-dotenv==1.1.1
+pytz==2025.2
+PyYAML==6.0.2
 six==1.17.0
 sqlparse==0.5.3
+uritemplate==4.2.0

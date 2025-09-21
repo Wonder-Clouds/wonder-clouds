@@ -1,0 +1,48 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            set -e
+            
+            echo "🔄 Entrando al directorio del proyecto"
+            cd ~/wonder-clouds
+
+            echo "📥 Haciendo pull de la rama main"
+            git pull origin main --no-rebase
+
+            echo "🧹 Limpiando imágenes antiguas de backend"
+            podman images --format "{{.Repository}} {{.ID}} {{.CreatedAt}}" | grep wonder-clouds_backend \
+              | sort -rk3 | tail -n +2 | awk '{print $2}' | xargs -r podman rmi -f
+
+            echo "🧹 Limpiando imágenes antiguas de frontend"
+            podman images --format "{{.Repository}} {{.ID}} {{.CreatedAt}}" | grep wonder-clouds_frontend \
+              | sort -rk3 | tail -n +2 | awk '{print $2}' | xargs -r podman rmi -f
+
+            echo "🧹 Limpiando imágenes dangling (<none>)"
+            podman images -f "dangling=true" -q | xargs -r podman rmi -f
+
+            echo "🛑 Deteniendo backend y frontend (si existen)"
+            podman-compose stop backend frontend || true
+
+            echo "⚙️ Construyendo imágenes actualizadas"
+            podman-compose build backend frontend
+
+            echo "🚀 Levantando servicios backend y frontend"
+            podman-compose up -d backend frontend
+
+            echo "✅ Despliegue finalizado correctamente"

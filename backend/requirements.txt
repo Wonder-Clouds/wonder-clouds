@@ -1,11 +1,13 @@
 asgiref==3.9.1
 Django==5.2.6
+django-cors-headers==4.9.0
 django-filter==25.1
 django-rest==0.8.7
 django-safedelete==1.4.1
 django-tinymce==4.1.0
 djangorestframework==3.16.1
 drf-yasg==1.21.10
+gunicorn==23.0.0
 inflection==0.5.1
 Markdown==3.9
 packaging==25.0

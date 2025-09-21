@@ -18,4 +18,4 @@ EXPOSE 8000
 CMD sh /app/wait_for_db.sh && \
     sh /app/create_super_user.sh && \
     python manage.py collectstatic --noinput && \
-    gunicorn server.wsgi:application --bind 127.0.0.1:8000 --workers 3
+    gunicorn server.wsgi:application --bind 0.0.0.0:8000 --workers 3

@@ -1,0 +1,21 @@
+FROM python:3.12-alpine
+
+WORKDIR /app
+
+# Copiar dependencias
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# Copiar el código
+COPY . .
+
+# Scripts ejecutables
+RUN chmod +x /app/wait_for_db.sh /app/create_super_user.sh
+
+EXPOSE 8000
+
+# Ejecutar con Gunicorn
+CMD sh /app/wait_for_db.sh && \
+    sh /app/create_super_user.sh && \
+    python manage.py collectstatic --noinput && \
+    gunicorn server.wsgi:application --bind 0.0.0.0:8000 --workers 3

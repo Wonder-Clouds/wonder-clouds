@@ -42,9 +42,8 @@ CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if os.ge
 
 # Development mode
 if DEBUG:
-    CORS_ALLOWED_ORIGINS = True
+    CORS_ALLOW_ALL_ORIGINS = True
     ALLOWED_HOST = ['*']
-    CSRF_TRUSTED_ORIGINS = ['*']
 
 # Application definition
 INSTALLED_APPS = [

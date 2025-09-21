@@ -7,3 +7,4 @@ env/
 # Ignore Python cache files
 __pycache__/
 media/
+*.pyc

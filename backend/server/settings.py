@@ -19,6 +19,8 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Django Proxy Settings
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -29,11 +31,21 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(',')
+# CORS SETTINGS
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", '').split(',') if os.getenv("CORS_ALLOWED_ORIGINS") else []
 
+# ALLOWED HOSTS
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',') if os.getenv("ALLOWED_HOSTS") else []
+
+# CSRF_TRUSTED_ORIGINS
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if os.getenv("CSRF_TRUSTED_ORIGINS") else []
+
+# Development mode
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+    ALLOWED_HOSTS = ['*']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,6 +64,7 @@ INSTALLED_APPS = [
     'safedelete',
     'tinymce',
     'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [

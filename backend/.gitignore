@@ -1,10 +1,71 @@
-.idea
+# ------------------------
+# Entornos de desarrollo
+# ------------------------
 .env
-migrations/
-db.sqlite3
-postgres/
 env/
-# Ignore Python cache files
+venv/
+ENV/
+*.venv
+
+# IDEs y editores
+.idea/
+.vscode/
+*.swp
+
+# ------------------------
+# Archivos de base de datos locales
+# ------------------------
+db.sqlite3
+*.sqlite3
+
+# Postgres (contenedor/local)
+postgres/
+*.sql
+*.dump
+
+# ------------------------
+# Django
+# ------------------------
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de migración (¡excepto las carpetas!)
+# 👉 subimos migrations/ pero no los __pycache__
+*/migrations/__pycache__/
+
+# Media (archivos subidos por usuarios)
 media/
-*.pyc
+
+# Staticfiles generados (pueden regenerarse con collectstatic)
+staticfiles/
+static/
+
+# ------------------------
+# Logs y reportes
+# ------------------------
+*.log
+*.out
+*.err
+
+# Cobertura y pruebas
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.pytest_cache/
+
+# ------------------------
+# Docker / Podman
+# ------------------------
+*.pid
+*.sock
+*.seed
+*.pid.lock
+
+# ------------------------
+# Otros
+# ------------------------
+.DS_Store
+Thumbs.db

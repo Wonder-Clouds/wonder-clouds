@@ -1,0 +1,29 @@
+name: Pull and Update Deployment branch
+
+on: 
+    push:
+        branches: [deployment]
+
+    
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Pull and Update Deployment branch
+            uses: appleboy/ssh-action@v1.0.0
+            with:
+              host: ${{ secrets.VPS_HOST }}
+              username: ${{ secrets.VPS_USER }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              port: 22
+              script: |
+                set -e
+                
+                echo "🔄 Entrando al directorio del proyecto"
+                cd ~/wonder-clouds
+
+                echo "📥 Haciendo pull de la rama deployment"
+                git pull origin deployment --no-rebase
+
+                echo "✅ Actualización de la rama deployment finalizada correctamente"

@@ -38,6 +38,8 @@ services:
       EMAIL_USE_TLS: ${EMAIL_USE_TLS}
     volumes:
       - backend:/app
+      - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
     ports:
       - "8000:8000"
 

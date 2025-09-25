@@ -82,6 +82,11 @@ cd wonder-clouds
    cp .env.example .env
    ```
 
+4. Levanta tu base de datos PostgreSQL que esta dentro del archivo podman-compose.yml
+    ```bash
+    podman-compose  up -d 
+    ```
+
 4. Aplica migraciones y levanta el servidor:
 
    ```bash

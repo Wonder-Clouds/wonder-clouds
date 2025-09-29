@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'tag',
     'smtp',
     'client',
+    'appointment',
     # Custom packages
     'rest_framework',
     'safedelete',

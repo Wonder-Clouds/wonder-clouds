@@ -6,6 +6,126 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Monitor, Smartphone, Cloud, Lightbulb, Code, Globe, MessageSquare, Paintbrush, Cog } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from '@/languages/translations';
+
+const LanguageSelector = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const languages = [
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'en', name: 'English', flag: '🇺🇸' }
+  ];
+
+  const currentLocale = pathname.split('/')[1] || 'es';
+  const currentLanguage = languages.find(lang => lang.code === currentLocale) || languages[0];
+
+  const changeLanguage = (langCode: string) => {
+    const segments = pathname.split('/');
+    segments[1] = langCode;
+    const newPath = segments.join('/');
+    router.push(newPath);
+    setIsOpen(false);
+  };
+
+  const dropdownVariants = {
+    hidden: {
+      opacity: 0,
+      y: -10,
+      scale: 0.95
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 30
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 30
+      }
+    }
+  };
+
+  return (
+    <div className="relative">
+      {/* Botón del selector */}
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors group"
+      >
+        <Globe className="h-4 w-4 text-gray-600 group-hover:text-primary transition-colors" />
+        <span className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">
+          {currentLanguage.flag} {currentLanguage.code.toUpperCase()}
+        </span>
+        <ChevronDown className={`h-3 w-3 text-gray-600 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+      </motion.button>
+
+      {/* Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            variants={dropdownVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="absolute top-full right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50"
+          >
+            {languages.map((language, index) => (
+              <motion.button
+                key={language.code}
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: index * 0.05 }}
+                onClick={() => changeLanguage(language.code)}
+                className={`w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-gray-50 transition-colors
+                  ${currentLocale === language.code
+                    ? 'bg-primary/5 text-primary font-medium'
+                    : 'text-gray-700 hover:text-primary'}`}
+              >
+                <span className="text-base">{language.flag}</span>
+                <span>{language.name}</span>
+                {currentLocale === language.code && (
+                  <motion.div
+                    className="ml-auto w-2 h-2 bg-primary rounded-full"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Overlay para cerrar el dropdown */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+    </div>
+  );
+};
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,8 +133,11 @@ const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const pathname = usePathname();
 
+  const locale = useLocale() as "es" | "en";
+  const t = useTranslations(locale);
+
   const navLinks = [
-    { href: '/', label: 'Inicio' },
+    { href: '/', label: t.nav.home },
     { href: '/nosotros', label: 'Nosotros' },
     {
       label: 'Servicios',
@@ -108,13 +231,25 @@ const Header = () => {
     visible: { opacity: 1, x: 0 }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <motion.nav
-      className="fixed w-full z-50 xl:px-24 py-4 transition-all duration-300"
-      initial="initial"
-      animate={isScrolled ? "scrolled" : "initial"}
-      variants={headerVariants}
-    >
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white shadow-md py-2'
+        : 'bg-transparent py-4'
+        }`}    >
       <div className="max-w-7xl mx-auto flex justify-between items-center h-16 px-4 lg:px-0">
         {/* Logo con mejores animaciones */}
         <motion.div
@@ -246,6 +381,7 @@ const Header = () => {
               )}
             </motion.div>
           ))}
+          <LanguageSelector />
 
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -418,7 +554,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 };
 

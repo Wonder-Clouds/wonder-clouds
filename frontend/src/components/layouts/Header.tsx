@@ -133,7 +133,7 @@ const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  const locale = useLocale();
+  const locale = useLocale() as "es" | "en";
   const t = useTranslations(locale);
 
   const navLinks = [

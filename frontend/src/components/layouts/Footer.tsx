@@ -3,12 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  FaEnvelope, 
-  FaFacebook, 
-  FaInstagram, 
-  FaLinkedin, 
-  FaPhoneAlt, 
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaPhoneAlt,
   FaTiktok,
   FaMapMarkerAlt,
   FaArrowUp
@@ -73,10 +73,11 @@ export default function Footer() {
   ];
 
   const services = [
-    "Desarrollo Web",
-    "Marketing Digital",
     "Desarrollo de Software",
+    "Desarrollo Web",
     "Aplicaciones Móviles",
+    "Automatización de procesos",
+    "Implementación de Chatbots",
   ];
 
   const quickLinks = [
@@ -92,7 +93,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gray-900 text-white overflow-hidden">
+    <footer className="relative bg-[#1F2C3D] text-white overflow-hidden">
       {/* Fondo animado */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute w-96 h-96 -top-48 -left-48 bg-red-500 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
@@ -103,7 +104,7 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Sección de la marca */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -116,8 +117,8 @@ export default function Footer() {
               </h2>
             </div>
             <p className="text-gray-400 text-sm">
-            Impulsamos tu presencia digital con soluciones creativas y estratégicas
-            que elevan tu marca por encima de las nubes.
+              Impulsamos tu presencia digital con soluciones creativas y estratégicas
+              que elevan tu marca por encima de las nubes.
             </p>
             <div className="flex flex-wrap gap-4">
               {socialLinks.map(({ icon: Icon, href, label, color }) => (
@@ -134,7 +135,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="block p-3 bg-white/10 rounded-lg backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
                   >
-                    <Icon 
+                    <Icon
                       size={20}
                       color={hoveredSocial === label ? color : 'white'}
                     />
@@ -145,7 +146,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Enlaces Rápidos */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -160,7 +161,7 @@ export default function Footer() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <Link 
+                  <Link
                     href={link.href}
                     className="text-gray-400 hover:text-white hover:translate-x-2 transition-all duration-300 inline-block"
                   >
@@ -172,7 +173,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Tours Populares */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -187,7 +188,7 @@ export default function Footer() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <span 
+                  <span
                     className="text-gray-400 hover:text-white hover:translate-x-2 transition-all duration-300 inline-block"
                   >
                     {tour}
@@ -198,7 +199,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Contacto */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -227,7 +228,7 @@ export default function Footer() {
         </div>
 
         {/* Newsletter */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -250,7 +251,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Footer bottom */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1 }}
@@ -261,10 +262,10 @@ export default function Footer() {
               © {new Date().getFullYear()} Wonder Clouds. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6 text-sm text-gray-400">
-              <Link href="/privacidad" className="hover:text-white transition-colors">
+              <Link href="/politicas-privacidad" className="hover:text-white transition-colors">
                 Política de Privacidad
               </Link>
-              <Link href="/terminos" className="hover:text-white transition-colors">
+              <Link href="/terminos-servicio" className="hover:text-white transition-colors">
                 Términos de Servicio
               </Link>
             </div>

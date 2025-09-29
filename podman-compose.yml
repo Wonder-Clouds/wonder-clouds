@@ -37,7 +37,6 @@ services:
       EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
       EMAIL_USE_TLS: ${EMAIL_USE_TLS}
     volumes:
-      - ./backend:/app
       - ./staticfiles:/app/staticfiles
       - ./media:/app/media
     ports:
@@ -64,8 +63,6 @@ services:
     restart: always
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend:/app
 
 
 volumes:

@@ -249,9 +249,6 @@ const ChatbotIntegrationPage = () => {
                 <div key={index} className="flex items-start gap-6 group">
                   <div className={`${step.color} p-4 rounded-2xl text-white shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 relative`}>
                     <step.icon className="w-8 h-8" />
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-white/20 rounded-full text-xs flex items-center justify-center font-bold">
-                      {index + 1}
-                    </div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-default mb-3">{step.title}</h3>
@@ -263,7 +260,7 @@ const ChatbotIntegrationPage = () => {
 
             {/* AI Brain Visualization */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-purple-600 to-indigo-700 p-8 rounded-3xl text-white shadow-2xl">
+              <div className="bg-gradient-to-br from-secondary via-primary to-default p-8 rounded-3xl text-white shadow-2xl">
                 <div className="text-center mb-8">
                   <Brain className="w-16 h-16 mx-auto mb-4 animate-pulse" />
                   <h3 className="text-2xl font-bold mb-2">IA Conversacional Avanzada</h3>
@@ -380,8 +377,8 @@ const ChatbotIntegrationPage = () => {
                 stat: "40% más conversiones"
               }
             ].map((benefit, index) => (
-              <div key={index} className="group">
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
+              <div key={index} className="group h-full">
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 h-full">
                   <div className="bg-gradient-to-br from-purple-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <benefit.icon className="w-8 h-8 text-white" />
                   </div>

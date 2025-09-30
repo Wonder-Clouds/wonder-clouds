@@ -5,7 +5,7 @@ const WebDevelopmentPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-light via-white to-light">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600">
+      <section className="relative overflow-hidden bg-gradient-to-br from-secondary via-primary to-default">
         <div className="absolute inset-0 bg-black/5"></div>
 
         {/* Animated background elements */}
@@ -187,7 +187,7 @@ const WebDevelopmentPage = () => {
 
             {/* Performance Dashboard */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-8 rounded-3xl text-white shadow-2xl">
+              <div className="bg-gradient-to-br from-primary to-default p-8 rounded-3xl text-white shadow-2xl">
                 <h3 className="text-2xl font-bold mb-6 text-center">Rendimiento Garantizado</h3>
 
                 {/* Performance metrics */}
@@ -270,9 +270,11 @@ const WebDevelopmentPage = () => {
                 features: ["Código limpio", "SEO técnico", "Testing completo"]
               }
             ].map((step, index) => (
-              <div key={index} className="group">
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 relative overflow-hidden">
-                  {/* Background gradient on hover */}
+              <div key={index} className="group h-full">
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl 
+                  transition-all duration-500 transform hover:-translate-y-3 
+                  border border-gray-100 relative overflow-hidden 
+                  h-full flex flex-col">                  {/* Background gradient on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
 
                   <div className="relative">
@@ -418,13 +420,17 @@ const WebDevelopmentPage = () => {
                 stat: "Crecimiento sin límites"
               }
             ].map((benefit, index) => (
-              <div key={index} className="group">
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
-                  <div className="bg-gradient-to-br from-cyan-500 to-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div key={index} className="group h-full">
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl 
+                      transition-all duration-500 transform hover:-translate-y-3 
+                      border border-gray-100 h-full flex flex-col">
+                  <div className="bg-gradient-to-br from-cyan-500 to-blue-600 w-16 h-16 
+                        rounded-2xl flex items-center justify-center mb-6 
+                        group-hover:scale-110 transition-transform duration-300">
                     <benefit.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-default mb-4">{benefit.title}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">{benefit.description}</p>
+                  <p className="text-gray-600 leading-relaxed mb-4 flex-grow">{benefit.description}</p>
                   <div className="text-sm font-semibold text-cyan-600 bg-cyan-50 px-3 py-1 rounded-full inline-block">
                     {benefit.stat}
                   </div>
@@ -436,7 +442,7 @@ const WebDevelopmentPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600">
+      <section className="py-20 bg-gradient-to-br from-secondary via-primary to-default">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             ¿Listo para Impactar con tu Presencia Digital?

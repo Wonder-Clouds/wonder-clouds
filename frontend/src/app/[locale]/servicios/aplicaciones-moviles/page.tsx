@@ -33,9 +33,6 @@ const MobileDevelopmentPage = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-primary px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
                   <Play className="w-5 h-5" />
-                  Ver Demo
-                </button>
-                <button className="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                   Solicitar Cotización
                 </button>
               </div>
@@ -144,7 +141,7 @@ const MobileDevelopmentPage = () => {
 
             {/* Flutter showcase */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-8 rounded-3xl text-white shadow-2xl">
+              <div className="bg-gradient-to-br from-primary to-secondary p-8 rounded-3xl text-white shadow-2xl">
                 <div className="text-center mb-8">
                   <h3 className="text-3xl font-bold mb-4">¿Por qué React Native?</h3>
                   <p className="text-blue-100 text-lg">Una sola base de código para múltiples plataformas</p>

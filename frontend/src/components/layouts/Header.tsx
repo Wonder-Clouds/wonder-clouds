@@ -138,9 +138,9 @@ const Header = () => {
 
   const navLinks = [
     { href: '/', label: t.nav.home },
-    { href: '/nosotros', label: 'Nosotros' },
+    { href: '/nosotros', label: t.nav.about },
     {
-      label: 'Servicios',
+      label: t.nav.services,
       hasDropdown: true,
       dropdownItems: [
         {
@@ -181,7 +181,7 @@ const Header = () => {
         }
       ]
     },
-    { href: '/proyectos', label: 'Nuestros proyectos' },
+    { href: '/proyectos', label: t.nav.projects },
   ];
 
   // Manejo del scroll para efectos de header
@@ -319,7 +319,6 @@ const Header = () => {
                     >
                       <div className="p-4 grid grid-cols-3 gap-4">
                         {link.dropdownItems.map((item, idx) => {
-                          // Determinar el icono correcto
                           let IconComponent;
                           switch (item.icon) {
                             case 'Code':

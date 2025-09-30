@@ -112,7 +112,7 @@ export default function Footer() {
           >
             <div className="flex items-center space-x-2">
               <img src="/static/logos/clouds.webp" alt="Logo" className="w-12 h-12 rounded-full" />
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-300 to-purple-400 bg-clip-text text-transparent">
                 Wonder Clouds
               </h2>
             </div>
@@ -183,6 +183,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {services.map((tour, index) => (
                 <motion.li
+                  className="cursor-pointer"
                   key={tour}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -243,7 +244,7 @@ export default function Footer() {
                 placeholder="Tu correo electrónico"
                 className="flex-1 px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-secondary bg-gray-800 text-white"
               />
-              <button className="bg-secondary text-white px-6 py-2 rounded-r-md hover:bg-primary transition-colors">
+              <button className="bg-secondary text-white px-6 py-2 rounded-r-md hover:bg-primary ring-2 ring-secondary transition-colors">
                 Suscribirse
               </button>
             </div>

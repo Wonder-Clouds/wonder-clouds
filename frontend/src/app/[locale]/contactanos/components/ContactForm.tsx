@@ -6,15 +6,45 @@ import { useState } from "react";
 import { Input } from "@nextui-org/input";
 import { BadgeCheck, Mail, Phone, Send, User } from "lucide-react";
 import { motion } from "framer-motion";
+import { sendContactEmail } from "@/services/contact.api";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+    message: "",
+    subject: "Consulta desde formulario web",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await sendContactEmail(formData);
+      setFormData({
+        name: "",
+        last_name: "",
+        email: "",
+        phone_number: "",
+        message: "",
+        subject: "",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="flex flex-col lg:flex-row mx-4 lg:mx-12 justify-center space-y-8 lg:space-y-0 lg:space-x-10">
       <section className="w-full lg:w-1/2 text-base md:text-lg px-4 lg:px-10">
@@ -94,9 +124,10 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="group transition-all duration-300 hover:scale-[1.02]">
             <Input
+              name="name"
               type="text"
               variant="underlined"
               placeholder="Nombres y apellidos"
@@ -104,6 +135,8 @@ const ContactForm = () => {
               startContent={
                 <User className="text-2xl text-[#104D7E] pointer-events-none flex-shrink-0" />
               }
+              value={formData.name}
+              onChange={handleChange}
               classNames={{
                 input: "text-lg",
                 inputWrapper: "pb-2"
@@ -112,6 +145,7 @@ const ContactForm = () => {
           </div>
           <div className="group transition-all duration-300 hover:scale-[1.02]">
             <Input
+              name="email"
               type="email"
               variant="underlined"
               placeholder="Correo electrónico"
@@ -119,6 +153,8 @@ const ContactForm = () => {
               startContent={
                 <Mail className="text-2xl text-[#104D7E] pointer-events-none flex-shrink-0" />
               }
+              value={formData.email}
+              onChange={handleChange}
               classNames={{
                 input: "text-lg",
                 inputWrapper: "pb-2"
@@ -127,6 +163,7 @@ const ContactForm = () => {
           </div>
           <div className="group transition-all duration-300 hover:scale-[1.02]">
             <Input
+              name="phone_number"
               type="tel"
               variant="underlined"
               placeholder="Número de contacto"
@@ -134,6 +171,8 @@ const ContactForm = () => {
               startContent={
                 <Phone className="text-2xl text-[#104D7E] pointer-events-none flex-shrink-0" />
               }
+              value={formData.phone_number}
+              onChange={handleChange}
               inputMode="numeric"
               pattern="[0-9]*"
               classNames={{
@@ -142,6 +181,14 @@ const ContactForm = () => {
               }}
             />
           </div>
+          <textarea
+            name="message"
+            placeholder="Escribe tu mensaje..."
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full border-b border-gray-300 focus:border-[#104D7E] transition-colors text-lg p-2 bg-transparent outline-none"
+            rows={3}
+          />
           <motion.button
             type="submit"
             disabled={loading}

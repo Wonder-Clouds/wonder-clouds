@@ -1,5 +1,4 @@
 import ProjectsList from "@/app/[locale]/proyectos/components/ProjectsList"
-import Breadcrumb from "@/components/ui/Breadcrumb"
 import ProjectsTitle from "./components/ProjectsTitle"
 import Link from "next/link"
 

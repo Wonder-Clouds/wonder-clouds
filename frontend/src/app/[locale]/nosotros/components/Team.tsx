@@ -4,13 +4,59 @@
 
 import TeamCard from "@/components/ui/TeamCard";
 import { motion } from "framer-motion";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 const Team = () => {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
+
+  const team = [
+    {
+      name: "Jayo Baez",
+      role: "Project Manager",
+      imageSrc: "/static/images/team/jayo.webp",
+      description: "Experto en gestión ágil y coordinación de equipos multidisciplinarios. Lidera la estrategia de proyectos garantizando entregas exitosas y de alta calidad.",
+      linkedinUrl: "https://linkedin.com",
+      githubUrl: "https://github.com",
+    },
+    {
+      name: "Cristian Monzon",
+      role: "Backend Lead Developer",
+      imageSrc: "/static/images/team/cristian.webp",
+      description: "Arquitecto de soluciones backend con experiencia en microservicios y bases de datos escalables. Especialista en optimización de rendimiento y seguridad.",
+    },
+    {
+      name: "Sergio Salazar",
+      role: "Frontend Lead Developer",
+      imageSrc: "/static/images/team/sergio.webp",
+      description: "Experto en React y tecnologías web modernas. Crea interfaces intuitivas y responsivas con enfoque en performance y experiencia de usuario excepcional.",
+    },
+    {
+      name: "Robby Villano",
+      role: "Desarrollador Full Stack",
+      imageSrc: "/static/images/team/robby.webp",
+      description: "Desarrollador versátil con dominio en frontend y backend. Apasionado por las soluciones innovadoras y el código limpio que impulsa productos de calidad.",
+    },
+    {
+      name: "Andres Tejada",
+      role: "Desarrollador Full Stack",
+      imageSrc: "/static/images/team/andres.webp",
+      description: "Ingeniero de software enfocado en crear aplicaciones robustas y escalables. Destaca en la resolución de problemas complejos y optimización de procesos.",
+    },
+    {
+      name: "Kiara Oquendo",
+      role: "UX/UI Designer",
+      imageSrc: "/static/images/team/kiara.webp",
+      description: "Diseñadora creativa especializada en experiencia de usuario y diseño de interfaces. Transforma ideas en diseños visuales atractivos y funcionales.",
+    },
+  ];
 
   return (
     <div className="w-full bg-light pb-20">
@@ -61,61 +107,81 @@ const Team = () => {
         </motion.div>
 
         <motion.div
-          className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-x-20 gap-y-10 mt-16 max-w-6xl p-5"
+          className="w-full max-w-[1400px] mx-auto lg:px-8"
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <TeamCard
-            name="Jayo Baez"
-            role="CEO"
-            imageSrc="/static/images/team/jayo.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
-          <TeamCard
-            name="Cristian Monzon"
-            role="Desarrollador de software"
-            imageSrc="/static/images/team/monchi.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
-          <TeamCard
-            name="Sergio Salazar"
-            role="Desarrollador de software"
-            imageSrc="/static/images/team/sergis.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
-          <TeamCard
-            name="Robby Villano"
-            role="Desarrollador de software"
-            imageSrc="/static/images/team/robby.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
-          <TeamCard
-            name="Kiara Oquendo"
-            role="Especialista en UX/UI"
-            imageSrc="/static/images/team/kiara.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
-          <TeamCard
-            name="Victor Álvarez"
-            role="Administrador de sistema de redes"
-            imageSrc="/static/images/team/victor.webp"
-            githubUrl="https://github.com/"
-            instagramUrl="https://www.instagram.com/"
-            linkedinUrl="https://www.linkedin.com/"
-          />
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={15}
+          >
+            {team.map((project, index) => (
+              <SwiperSlide key={index} className="!w-[300px] sm:!w-[340px] md:!w-[400px] lg:!w-[260px] rounded-lg">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <TeamCard
+                    name={project.name}
+                    role={project.role}
+                    imageSrc={project.imageSrc}
+                    description={project.description}
+                  />
+                </motion.div>
+              </SwiperSlide>
+            ))}
+
+            <div className="relative mt-8 sm:mt-12">
+              <div className="swiper-pagination !relative !bottom-0 !w-full flex justify-center gap-2"></div>
+            </div>
+          </Swiper>
         </motion.div>
+        <style jsx global>{`
+        .swiper-slide {
+          transition: all 0.3s ease;
+          height: auto !important;
+        }
+
+        .swiper-slide-active {
+          transform: scale(1.05);
+        }
+
+        .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background: #CBD5E1;
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+          background: #104D7E;
+          width: 24px;
+          border-radius: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+          .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+          }
+
+          .swiper-pagination-bullet-active {
+            width: 20px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .swiper-slide-active {
+            transform: scale(1.08);
+          }
+        }
+      `}</style>
       </motion.div>
     </div>
   )

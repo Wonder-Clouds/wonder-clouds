@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import { ArrowRight, Users, Rocket, Target } from 'lucide-react';
 import Link from "next/link";
 
@@ -43,7 +42,7 @@ const NosotrosTitle = () => {
           <h1 className="text-4xl md:text-5xl text-primary font-bold mb-4">
             Nosotros
           </h1>
-          <Breadcrumb />
+          {/* <Breadcrumb /> */}
         </motion.div>
       </div>
 
@@ -59,16 +58,16 @@ const NosotrosTitle = () => {
             <motion.div
               initial={{ x: 0, y: 0 }}
               animate={{
-                x: [0, -10, 10, -10, 10, 0], 
-                y: [0, -10, 10, 10, -10, 0]  
+                x: [0, -10, 10, -10, 10, 0],
+                y: [0, -10, 10, 10, -10, 0]
               }}
               transition={{
-                duration: 5, 
-                repeat: Infinity, 
+                duration: 5,
+                repeat: Infinity,
                 repeatType: "loop",
-                ease: "easeInOut", 
+                ease: "easeInOut",
               }}
-              className="w-auto h-auto" 
+              className="w-auto h-auto"
             >
               <Image
                 src="/static/images/cohete.webp"
@@ -100,14 +99,9 @@ const NosotrosTitle = () => {
             </h2>
 
             <p className="text-lg text-default leading-relaxed">
-              En Wonder Clouds, somos una empresa emergente apasionada por el mundo digital. Desde el corazón de Cusco,
-              transformamos y potenciamos los negocios de nuestros clientes mediante soluciones digitales innovadoras.
-            </p>
-
-            <p className="text-lg text-default leading-relaxed">
-              Nuestro equipo joven fusiona creatividad y experiencia técnica para llevar tu presencia digital al siguiente nivel.
-              Con un enfoque en la innovación constante y la excelencia en cada proyecto, trabajamos de la mano con nuestros clientes para crear
-              soluciones digitales únicas.
+              En Wonder Clouds, impulsamos la transformación digital de las empresas mediante soluciones tecnológicas innovadoras y creativas.
+              Nuestro equipo combina talento, experiencia y pasión por la tecnología para llevar cada proyecto al siguiente nivel.
+              Trabajamos junto a nuestros clientes para crear estrategias digitales únicas que conecten, inspiren y generen resultados reales.
             </p>
 
             <Link

@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 
 const ProjectsTitle = () => {
   const fadeInUp = {
@@ -22,7 +21,7 @@ const ProjectsTitle = () => {
           <h1 className="text-4xl md:text-5xl text-primary font-bold mb-4">
             Proyectos
           </h1>
-          <Breadcrumb />
+          {/* <Breadcrumb /> */}
         </motion.div>
       </div>
     </>

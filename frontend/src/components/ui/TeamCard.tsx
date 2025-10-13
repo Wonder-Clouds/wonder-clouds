@@ -1,7 +1,5 @@
-import { Github } from "lucide-react";
 import Image from "next/image";
 import { CiLinkedin } from "react-icons/ci";
-import { IoLogoInstagram } from "react-icons/io";
 
 interface TeamCardProps {
   name: string;
@@ -10,37 +8,39 @@ interface TeamCardProps {
   linkedinUrl?: string;
   githubUrl?: string;
   instagramUrl?: string;
+  description?: string;
 }
 
 const TeamCard = ({
   name,
   role,
-  imageSrc, 
-  linkedinUrl, 
-  githubUrl, 
-  instagramUrl 
+  imageSrc,
+  linkedinUrl,
+  description = "Miembro del equipo con experiencia en desarrollo y liderazgo de proyectos innovadores.",
 }: TeamCardProps) => {
   return (
-    <div className="flex flex-col text-color font-quicksand">
-      <Image className="w-full max-h-80 object-cover rounded-2xl" src={imageSrc} width={800} height={800} alt={name} />
-      <span className="text-xl text-color font-semibold mt-3">{name}</span>
-      <span className="text-medium text-[#9EA1ADEE]">{role}</span>
-      <div className="flex flex-row space-x-2 mt-1">
-        {linkedinUrl && (
-          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
-            <CiLinkedin size={25} />
-          </a>
-        )}
-        {githubUrl && (
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-            <Github size={25} />
-          </a>
-        )}
-        {instagramUrl && (
-          <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
-            <IoLogoInstagram size={25} />
-          </a>
-        )}
+    <div className="relative w-full h-80 rounded-xl overflow-hidden group cursor-pointer">
+      <Image
+        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+        src={imageSrc}
+        width={400}
+        height={400}
+        alt={name}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-0" />
+
+      <div className="absolute bottom-0 left-0 right-0 p-6 transition-opacity duration-300 group-hover:opacity-0">
+        <h3 className="text-2xl text-white font-semibold font-quicksand">{name}</h3>
+        <p className="text-gray-200 font-quicksand">{role}</p>
+      </div>
+
+      <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-95 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-white">
+        <h3 className="text-2xl font-semibold font-quicksand mb-2">{name}</h3>
+        <p className="text-blue-100 font-quicksand mb-4">{role}</p>
+        <p className="text-sm text-center text-blue-50 mb-6 font-quicksand">
+          {description}
+        </p>
       </div>
     </div>
   );

@@ -193,20 +193,9 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Cerrar menú al cambiar de ruta
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
-
-  // Animaciones
-  const headerVariants = {
-    initial: { backgroundColor: 'rgba(255, 255, 255, 0)' },
-    scrolled: {
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      backdropFilter: 'blur(8px)'
-    }
-  };
 
   const linkVariants = {
     hover: { scale: 1.05, transition: { duration: 0.2 } },
@@ -247,7 +236,7 @@ const Header = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-white shadow-md py-2'
+        ? 'bg-white shadow-md pt-2 pb-4'
         : 'bg-transparent py-4'
         }`}    >
       <div className="max-w-7xl mx-auto flex justify-between items-center h-16 px-4 lg:px-0">
@@ -260,10 +249,10 @@ const Header = () => {
         >
           <Link href="/">
             <Image
-              src="/static/logos/wonderclouds.webp"
+              src="/static/logos/wonder.webp"
               alt="Logo Wonder Clouds Cusco"
-              width={200}
-              height={200}
+              width={100}
+              height={100}
               className="w-4/6 xl:w-5/6 h-auto transform hover:scale-105 transition-transform duration-300"
               priority
             />

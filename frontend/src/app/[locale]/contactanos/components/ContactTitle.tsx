@@ -3,7 +3,6 @@
 "use client"
 
 import { motion } from "framer-motion"; // Importa motion
-import Breadcrumb from "@/components/ui/Breadcrumb";
 
 const ContactTitle = () => {
 
@@ -25,7 +24,7 @@ const ContactTitle = () => {
           Contáctanos
         </h1>
         <div className="mt-4">
-          <Breadcrumb colorText="text-default" />
+          {/* <Breadcrumb colorText="text-default" /> */}
         </div>
       </motion.div>
     </>

@@ -28,6 +28,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         primary: "#104D7E",
         secondary: "#4693C0",
+        subtle: "#6B7280",
         light: "#F2F8FE",
         default: "#1F2C3D",
       },

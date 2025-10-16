@@ -172,7 +172,7 @@ const SoftwareDevelopmentPage = () => {
               }
             ].map((benefit, index) => (
               <div key={index} className="group">
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 h-full">
                   <div className={`inline-flex p-4 rounded-xl mb-6 ${benefit.color.replace('text-', 'bg-').replace('600', '100')}`}>
                     <benefit.icon className={`w-8 h-8 ${benefit.color}`} />
                   </div>

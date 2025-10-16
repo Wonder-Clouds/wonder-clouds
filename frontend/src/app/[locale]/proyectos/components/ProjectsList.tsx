@@ -12,8 +12,14 @@ const ProjectsList = () => {
       <CardProject
         title="Plataforma web para la gestión de ventas - El Comercio"
         imageSrc="/static/images/proyecto_02.webp"
-        imageAlt="Proyecto paltos"
+        imageAlt="El Comercio"
         type={["Plataforma web", "Dashboard", "CRM"]}
+      />
+      <CardProject
+        title="Página web para Pachamama Journeys"
+        imageSrc="/static/images/proyecto_03.webp"
+        imageAlt="Proyecto paltos"
+        type={["Página web", "Turismo", "Responsive"]}
       />
       <CardProject
         title="Desarrollo web para AER Athletic Club"

@@ -61,7 +61,7 @@ const Team = () => {
   return (
     <div className="w-full bg-light pb-20">
       <motion.div
-        className="flex flex-col w-full max-w-7xl items-center relative space-y-20 mx-auto "
+        className="flex flex-col w-full max-w-7xl items-center relative space-y-10 mx-auto "
         initial="hidden"
         whileInView="visible"
         variants={fadeInUp}
@@ -77,44 +77,26 @@ const Team = () => {
           Nuestro <span className="text-primary">Equipo</span>
         </motion.h2>
 
-        <motion.div
-          className="flex flex-row max-w-6xl space-x-10"
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.5, delay: 0.6 }}
+        <motion.p
+          className="w-2/3 text-lg text-subtle text-center font-medium font-quicksand"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.h3
-            className="text-3xl lg:text-4xl text-default font-semibold font-monserrat"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            Los <span className="text-primary">Mejores</span>
-          </motion.h3>
-
-          <motion.p
-            className="w-2/3 text-lg text-default font-medium font-quicksand"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            En WonderClouds, nuestro equipo está compuesto por los mejores en soluciones digitales.
-            Estamos comprometidos a impulsar tu marca hacia el éxito con creatividad, experiencia y dedicación incomparables.
-          </motion.p>
-        </motion.div>
+          Somos un equipo de profesionales comprometidos con la innovación, la creatividad y la excelencia.
+          Cada miembro aporta su talento y experiencia para transformar ideas en proyectos de impacto.
+        </motion.p>
 
         <motion.div
-          className="w-full max-w-[1400px] mx-auto lg:px-8"
+          className="w-full max-w-[1400px] mx-auto lg:px-8 py-10"
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <Swiper
-            slidesPerView={4}
+            slidesPerView={'auto'}
             spaceBetween={15}
           >
             {team.map((project, index) => (

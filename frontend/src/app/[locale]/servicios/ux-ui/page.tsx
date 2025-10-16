@@ -353,7 +353,7 @@ const UXUIDesignPage = () => {
               }
             ].map((deliverable, index) => (
               <div key={index} className="group">
-                <div className="bg-gradient-to-br from-light to-white p-6 rounded-2xl border border-secondary/20 hover:shadow-xl transition-all duration-300">
+                <div className="bg-gradient-to-br from-light to-white p-6 rounded-2xl border border-secondary/20 hover:shadow-xl transition-all duration-300 h-full">
                   <div className={`inline-flex p-4 rounded-2xl mb-6 bg-gradient-to-br ${deliverable.color} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     <deliverable.icon className="w-8 h-8" />
                   </div>
@@ -406,7 +406,7 @@ const UXUIDesignPage = () => {
               }
             ].map((benefit, index) => (
               <div key={index} className="group">
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 h-full">
                   <div className="bg-gradient-to-br from-pink-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <benefit.icon className="w-8 h-8 text-white" />
                   </div>
@@ -453,7 +453,7 @@ const UXUIDesignPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-700">
+      <section className="py-20 bg-gradient-to-br from-primary via-secondary to-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             ¿Listo para Crear Experiencias Memorables?
@@ -463,13 +463,10 @@ const UXUIDesignPage = () => {
             generarán resultados reales para tu negocio.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-pink-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
+            <button className="bg-white text-default px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
               <Palette className="w-5 h-5" />
               Comenzar Proyecto de Diseño
               <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-              Ver Casos de Estudio
             </button>
           </div>
         </div>
@@ -486,10 +483,10 @@ const UXUIDesignPage = () => {
               { number: "4.9★", label: "Rating de Diseño", icon: Star }
             ].map((stat, index) => (
               <div key={index} className="p-6 group">
-                <div className="bg-gradient-to-br from-pink-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-gradient-to-br from-primary to-primary w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-4xl font-bold bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>

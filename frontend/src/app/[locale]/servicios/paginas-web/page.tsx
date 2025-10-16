@@ -274,7 +274,7 @@ const WebDevelopmentPage = () => {
                 <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl 
                   transition-all duration-500 transform hover:-translate-y-3 
                   border border-gray-100 relative overflow-hidden 
-                  h-full flex flex-col">                  {/* Background gradient on hover */}
+                  h-full flex flex-col">
                   <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
 
                   <div className="relative">

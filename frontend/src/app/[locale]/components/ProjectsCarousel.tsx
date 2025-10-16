@@ -15,16 +15,22 @@ import 'swiper/css/autoplay';
 
 const projects = [
   {
-    title: "Proyecto Paltos - Geragri",
-    imageSrc: "/static/images/prueba.png",
-    description: "",
-    tags: ["Desarrollo de software", "Página web", "Responsive"]
-  },
-  {
     title: "CORLAD - Cusco",
     imageSrc: "/static/images/proyecto_01.webp",
     description: "",
     tags: ["Plataforma web", "Dashboard", "Base de datos"]
+  },
+  {
+    title: "Plataforma web para la gestión de ventas - El Comercio",
+    imageSrc: "/static/images/proyecto_02.webp",
+    description: "",
+    tags: ["Desarrollo de software", "Página web", "Responsive"]
+  },
+  {
+    title: "Página web para Pachamama Journeys",
+    imageSrc: "/static/images/proyecto_03.webp",
+    description: "",
+    tags: ["Página web", "Turismo", "Responsive"]
   },
   {
     title: "AER. Athletic Club",
